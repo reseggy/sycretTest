@@ -4,8 +4,11 @@ import {
   useDispatch as dispatchHook,
   useSelector as selectorHook
 } from 'react-redux';
+import sertificatesReducer from '../slices/sertificateSlice';
 
-export const rootReducer = combineReducers({});
+export const rootReducer = combineReducers({
+  sertificates: sertificatesReducer
+});
 
 const store = configureStore({
   reducer: rootReducer,

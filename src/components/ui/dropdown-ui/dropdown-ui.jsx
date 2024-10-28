@@ -11,7 +11,7 @@ export const DropdownUI = ({
   return (
     <div className={styles.dropdown}>
       <button className={styles.dropdownToggle} onClick={handleToggle}>
-        {selectedItem ? selectedItem.label : 'Выберите элемент'}
+        {selectedItem ? selectedItem.NAME : 'Выберите сумму сертификата'}
       </button>
       {isOpen && (
         <ul className={styles.dropdownMenu}>
@@ -21,7 +21,7 @@ export const DropdownUI = ({
               className={styles.dropdownItem}
               onClick={() => handleSelect(item)}
             >
-              {item.label}
+              {item.NAME}
             </li>
           ))}
         </ul>
