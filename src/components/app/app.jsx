@@ -1,10 +1,15 @@
 import React from 'react';
-// import { Provider } from 'react-redux';
+import { MainPage } from '../../pages/main-page/index';
+// import styles from './app.module.css';
+import { Routes, Route } from 'react-router-dom';
 
-export const App = () => {
+const App = () => {
   return (
-    <div>
-      <h1>Hello, Sycret!</h1>
-    </div>
+    <Routes>
+      <Route path='/' element={<MainPage />} />
+      {/* <Route path='/form' element={<FeedOrderModal onClose={onClose} />} /> */}
+    </Routes>
   );
 };
+
+export default App;

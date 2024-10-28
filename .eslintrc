@@ -13,8 +13,14 @@
   },
   "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
   "plugins": ["react", "prettier"],
+  "settings": {
+    "react": {
+      "version": "detect" // Указание версии React
+    }
+  },
   "rules": {
     "prettier/prettier": "error",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off"
   }
 }
