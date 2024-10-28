@@ -7,7 +7,6 @@ const App = () => {
   return (
     <Routes>
       <Route path='/' element={<MainPage />} />
-      {/* <Route path='/form' element={<FeedOrderModal onClose={onClose} />} /> */}
     </Routes>
   );
 };

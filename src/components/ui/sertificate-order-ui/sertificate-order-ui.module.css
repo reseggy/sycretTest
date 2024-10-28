@@ -10,20 +10,32 @@
   padding: 30px;
 }
 
-.sectionTitle {
-  color: var(--primary-color);
-  font-family: var(--font-family);
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 150%;
-}
-
-.buttonOrder {
+.text {
   color: var(--primary-color);
   font-family: var(--font-family);
   font-size: 16px;
   font-weight: 600;
   line-height: 150%;
+}
+
+.sectionTitle {
+  font-size: 24px;
+}
+
+.subsection {
+  min-width: 100%;
+  min-height: 82px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subsectionText {
+  font-weight: 400;
+  text-align: center;
+}
+
+.buttonOrder {
   padding: 12px 30px;
   border-radius: 50px;
   background-color: var(--additional-color);

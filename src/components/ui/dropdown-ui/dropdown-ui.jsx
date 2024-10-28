@@ -15,15 +15,18 @@ export const DropdownUI = ({
       </button>
       {isOpen && (
         <ul className={styles.dropdownMenu}>
-          {items.map((item) => (
-            <li
-              key={item.value}
-              className={styles.dropdownItem}
-              onClick={() => handleSelect(item)}
-            >
-              {item.NAME}
-            </li>
-          ))}
+          {items
+            .map((item) => (
+              <li
+                key={item.ID}
+                className={styles.dropdownItem}
+                onClick={() => handleSelect(item)}
+              >
+                {item.NAME}
+              </li>
+            ))
+            .reverse()}
+          {/* reverse для более удобного отображения суммы сертификатов */}
         </ul>
       )}
     </div>
