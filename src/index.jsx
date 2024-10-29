@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
 root.render(
   <Provider store={store}>
     <React.StrictMode>
-      <BrowserRouter>
+      <BrowserRouter basename='/sycretTest'>
         <App />
       </BrowserRouter>
     </React.StrictMode>
