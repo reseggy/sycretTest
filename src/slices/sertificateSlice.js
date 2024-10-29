@@ -1,16 +1,29 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getCertificatesApi } from '../utils/sertificates-api';
+import { getCertificatesApi, addOrderApi } from '../utils/sertificates-api';
 
 const initialState = {
   sertificatesList: [],
   isLoading: false,
-  error: null
+  error: null,
+  orderData: null,
+  orderReqest: false
 };
 
-export const getSertificates = createAsyncThunk('feed/get', async () => {
-  const response = await getCertificatesApi();
-  return response;
-});
+export const getSertificates = createAsyncThunk(
+  'sertificates/get',
+  async () => {
+    const response = await getCertificatesApi();
+    return response;
+  }
+);
+
+export const postOrder = createAsyncThunk(
+  'sertificates/order',
+  async (options) => {
+    const response = await addOrderApi(options);
+    return response;
+  }
+);
 
 const sertificatesSlice = createSlice({
   name: 'sertificates',
@@ -28,6 +41,22 @@ const sertificatesSlice = createSlice({
       })
       .addCase(getSertificates.rejected, (state, action) => {
         state.isLoading = false;
+        state.error = action.error.message;
+      })
+      .addCase(postOrder.pending, (state) => {
+        state.orderReqest = true;
+        state.isLoading = true;
+        state.error = null;
+        state.orderData = null;
+      })
+      .addCase(postOrder.fulfilled, (state, action) => {
+        state.orderReqest = false;
+        state.isLoading = false;
+        state.orderData = action.payload.data;
+      })
+      .addCase(postOrder.rejected, (state, action) => {
+        state.isLoading = false;
+        state.orderReqest = false;
         state.error = action.error.message;
       });
   }

@@ -1,7 +1,8 @@
 .section {
   background-color: var(--background);
-  min-width: 400px;
-  min-height: 400px;
+  width: 80vw;
+  height: 40vh;
+
   border-radius: 50px;
   display: flex;
   flex-direction: column;
@@ -53,4 +54,38 @@
 
 .buttonOrder:disabled {
   background-color: rgb(103, 32, 40);
+}
+
+@media (max-width: 375px) {
+  .section {
+    min-width: fit-content;
+    min-height: 250px;
+  }
+}
+
+@media (min-width: 375px) {
+  .section {
+    min-width: 350px;
+    min-height: 300px;
+  }
+}
+
+@media (min-width: 768px) {
+  .section {
+    min-height: 350px;
+  }
+
+  .text {
+    font-size: 22px;
+  }
+
+  .sectionTitle {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .section {
+    max-width: 1400px;
+  }
 }

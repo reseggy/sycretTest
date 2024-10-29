@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { FormModalUI } from '../ui/form-modal-ui';
+import { postOrder } from '../../slices/sertificateSlice';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export const FormModal = ({ selectedItem, onClose }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   useEffect(() => {
     const handleEsc = (e) => {
       e.key === 'Escape' && onClose();
@@ -67,6 +73,35 @@ export const FormModal = ({ selectedItem, onClose }) => {
     });
   };
 
+  const formatPhoneForSubmission = (phone) => {
+    const digitsOnly = phone.replace(/[^\d]/g, '');
+    return digitsOnly.slice(1); // Удаляю первую цифру, так как это код страны (7)
+  };
+
+  const onOrderClick = () => {
+    if (!selectedItem) return;
+    const options = {
+      Id: selectedItem.ID,
+      TableName: selectedItem.TABLENAME,
+      PrimaryKey: selectedItem.PRIMARYKEY,
+      Price: selectedItem.PRICE,
+      Summa: selectedItem.SUMMA,
+      ClientName: formData.name,
+      Phone: formatPhoneForSubmission(formData.phone),
+      Email: formData.email,
+      PaymentTypeId: 2,
+      UseDelivery: 0,
+      DeliveryAddress: '',
+      IsGift: 0,
+      MsgText: formData.message,
+      PName: '',
+      PPhone: ''
+    };
+    dispatch(postOrder(options)).finally(() => {
+      navigate('/payment');
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const nameError = validateName(formData.name);
@@ -80,7 +115,7 @@ export const FormModal = ({ selectedItem, onClose }) => {
         email: emailError
       });
     } else {
-      console.log('Form submitted successfully', formData, selectedItem);
+      onOrderClick();
     }
   };
 
