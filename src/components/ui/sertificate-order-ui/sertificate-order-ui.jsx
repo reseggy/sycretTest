@@ -37,11 +37,13 @@ export const SertificateOrderUI = ({
             onClick={handleButtonClick}
             disabled={!selectedItem}
           >
-            Оплатить
+            Далее
           </button>
         </div>
       </section>
-      {isModalOpen && <FormModal onClose={handleCloseModal} />}
+      {isModalOpen && (
+        <FormModal selectedItem={selectedItem} onClose={handleCloseModal} />
+      )}
     </>
   );
 };

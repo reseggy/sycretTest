@@ -3,9 +3,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 9999;
-  margin: auto;
-  padding: 40px 40px 60px;
+  z-index: 3;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  padding: 40px;
   background-color: #1c1c21;
   border-radius: 40px;
   box-shadow:
@@ -16,29 +21,68 @@
 }
 
 .header {
+  position: relative;
+  min-width: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
-  min-height: 64px;
+}
+
+.title {
+  color: var(--primary-color);
+  font-family: var(--font-family);
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 100%;
 }
 
 .button {
-  display: flex;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
   width: 24px;
   height: 24px;
-  outline: none;
+  padding: 0;
   border: none;
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0);
-  margin-left: auto;
-  padding: 0;
-}
-
-.img {
-  margin: auto;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .content {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.submitButton {
+  min-width: 100%;
+  border-radius: 50px;
+  background-color: var(--additional-color);
+  border: none;
+
+  color: var(--primary-color);
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 150%;
+  padding: 12px 30px;
+}
+
+.submitButton:hover {
+  background-color: rgb(227, 79, 96);
+}
+
+.submitButton:active {
+  background-color: rgb(176, 28, 45);
 }
